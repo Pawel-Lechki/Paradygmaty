@@ -5,12 +5,14 @@ public class Client
     private string firstName;
     private string lastName;
     private readonly string personalID;
+
+    private Address address;
     public Client()
     {
         Console.WriteLine("Wywołanie konstruktora bezparametrowego");
     }
 
-    public Client(string firstName, string lastName, string personalId)
+    public Client(string firstName, string lastName, string personalId, Address address)
     {
         setFirstName(firstName);
         setLastName(lastName);
@@ -23,11 +25,12 @@ public class Client
             throw new ArgumentException("Nieprawidłowy numer PESEL");
         }
         Console.WriteLine("Wywołano konstruktor z parametrami");
+        this.address = address;
     }
     
     public string getClinetInfo()
     {
-        return $"Kinent imię {firstName} {lastName}, pesel: {personalID}";
+        return $"Kinent imię {firstName} {lastName}, pesel: {personalID} zamieszkały {address.getAddress()}";
     }
 
     public void setFirstName(string firstName)
@@ -45,7 +48,7 @@ public class Client
         this.lastName = lastName;
     }
 
-    public string getLastName(string lastName)
+    public string getLastName()
     {
         return this.lastName;
     }
